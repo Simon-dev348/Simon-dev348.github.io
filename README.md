@@ -1,2 +1,1 @@
-# Simon-dev348.github.io
-My Portfolio
+Portfolio — Next.js + TypeScript
