@@ -14,9 +14,37 @@ const inter = Inter({
   weight: ["400", "500", "600"],
 });
 
+const siteUrl = "https://simon-dev348.github.io";
+const siteTitle = "Simon Githuo — Portfolio";
+const siteDescription =
+  "Full stack developer and ICT support specialist delivering web app solutions and technical support.";
+
 export const metadata: Metadata = {
-  title: "Simon Githuo — Portfolio",
-  description: "Full stack developer and ICT support specialist delivering web app solutions and technical support.",
+  metadataBase: new URL(siteUrl),
+  title: siteTitle,
+  description: siteDescription,
+  openGraph: {
+    title: siteTitle,
+    description: siteDescription,
+    url: siteUrl,
+    siteName: siteTitle,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: siteTitle,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({
