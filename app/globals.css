@@ -2,98 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --ink: #080b13;
-  --panel: #0d121e;
-}
-
-html {
+* {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--ink);
-  background-image:
-    radial-gradient(circle at 15% 0%, rgba(168, 85, 247, 0.14), transparent 40%),
-    radial-gradient(circle at 85% 15%, rgba(34, 211, 238, 0.12), transparent 45%);
-  color: #e7eaf2;
+  background-color: #05070d;
+  color: #e4e9f2;
+}
+
+::selection {
+  background: #8b5cf6;
+  color: #05070d;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #05070d;
+}
+::-webkit-scrollbar-thumb {
+  background: #1b2233;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #22d3ee;
 }
 
 .text-gradient {
-  background: linear-gradient(90deg, #22d3ee 0%, #a855f7 55%, #ec4899 100%);
+  background-image: linear-gradient(90deg, #22d3ee 0%, #8b5cf6 50%, #ec4899 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-.ring-gradient {
-  background: conic-gradient(from 0deg, #22d3ee, #a855f7, #ec4899, #22d3ee);
+.grid-overlay {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .fade-up {
-    animation: fadeUp 0.7s ease-out both;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
-
-  .animate-ring-spin {
-    animation: ringSpin 6s linear infinite;
-  }
-}
-
-@keyframes ringSpin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.btn-glow {
-  position: relative;
-  isolation: isolate;
-}
-
-.btn-glow::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  z-index: -1;
-  border-radius: inherit;
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg,
-    transparent 265deg,
-    #22d3ee 300deg,
-    #a855f7 330deg,
-    #ec4899 355deg,
-    transparent 360deg
-  );
-  opacity: 0;
-  transition: opacity 0.25s ease;
-}
-
-.btn-glow:hover::before,
-.btn-glow:focus-visible::before {
-  opacity: 1;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .btn-glow:hover::before,
-  .btn-glow:focus-visible::before {
-    animation: ringSpin 1.6s linear infinite;
-  }
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-::selection {
-  background: #a855f7;
-  color: #080b13;
 }

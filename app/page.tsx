@@ -1,22 +1,30 @@
+import CursorGlow from "@/components/CursorGlow";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
+import Education from "@/components/Education";
+import Certifications from "@/components/Certifications";
 import Projects from "@/components/Projects";
+import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
-import Resume from "@/components/Resume";
+
 export default function Home() {
   return (
-    <main className="min-h-screen bg-ink text-fog">
+    <main className="relative bg-void">
+      <CursorGlow />
       <Nav />
       <Hero />
       <About />
       <Skills />
+      <Education />
+      <Certifications />
       <Projects />
-      <Resume />
+      <Experience />
       <Contact />
-      <Footer />
+      <footer className="border-t border-line px-4 py-6 text-center font-mono text-[10px] uppercase tracking-[0.25em] text-muted sm:px-6">
+        Simon Githuo @2026
+      </footer>
     </main>
   );
 }

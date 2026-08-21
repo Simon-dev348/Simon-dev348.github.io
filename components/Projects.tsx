@@ -1,115 +1,80 @@
-import SystemGlyph from "./SystemGlyph";
+"use client";
 
-type Project = {
-  title: string;
-  category: string;
-  description: string;
-  tags: string[];
-  href: string;
-  glyph: "pipeline" | "integration" | "security" | "marketplace" | "procure-to-pay" | "dashboard" | "default" ;
-};
-
-const PROJECTS: Project[] = [
-  {
-    title: "Procure-to-Pay App",
-    category: "Full-Stack Project",
-    description:
-      "A procurement platform where customer-side officers create purchase requests, review supplier proposals, approve a supplier, and complete procurement through payment, with role-based auth separating customer and supplier portals.",
-    tags: ["Django REST", "Next.js", "PostgreSQL", "RBAC"],
-    href: "#",
-    glyph: "procure-to-pay",
-  },
-  {
-    title: "Homiqa",
-    category: "Real Estate Marketplace",
-    description:
-      "A geo-aware real estate marketplace where students, professionals, and tenants find their ideal properties, and landlords manage and showcase listings — built as a microservices architecture with M-Pesa payments.",
-    tags: ["Django REST", "PostGIS", "Next.js 14", "Celery", "M-Pesa"],
-    href: "#",
-    glyph: "marketplace",
-  },
-  {
-    title: "API System Compliance Bridge",
-    category: "Production System",
-    description:
-      "A compliance integration bridge connecting enterprise clients to government platforms for health insurance claims and fiscal invoicing, with async job processing for reliable submissions.",
-    tags: ["Fastify", "TypeScript", "BullMQ", "Redis", "Django REST"],
-    href: "#",
-    glyph: "pipeline",
-  },
-  {
-    title: "Government Health System Integration",
-    category: "Systems Integration",
-    description:
-      "Built fiscal invoicing and health-claims integrations against government EDI and API specs, handling retries, validation, and audit trails for every submission.",
-    tags: ["Node.js", "REST APIs", "EDI", "Queue Processing"],
-    href: "#",
-    glyph: "integration",
-  },
-  {
-    title: "Identity & Access Service",
-    category: "Security & Auth",
-    description:
-      "A dedicated identity service handling authentication, RBAC, and JWT session management, built to satisfy Kenya's Data Protection Act and ODPC requirements.",
-    tags: ["Django", "DRF", "simplejwt", "RBAC"],
-    href: "#",
-    glyph: "security",
-  },
-  {
-    title: "Procurement Management System",
-    category: "Full-Stack Project",
-    description:
-      "An end-to-end procurement platform with a typed API client, auth state management, and a dashboard for tracking requests, approvals, and vendors.",
-    tags: ["Next.js 14", "Zustand", "React Query", "PostgreSQL"],
-    href: "#",
-    glyph: "dashboard",
-  },
-];
+import { motion } from "framer-motion";
+import Reveal from "./Reveal";
+import { projects } from "@/lib/data";
 
 export default function Projects() {
   return (
-    <section id="projects" className="mx-auto max-w-5xl px-6 py-16">
-      <h2 className="text-center font-display text-2xl font-bold text-fog">
-        My Projects
-      </h2>
-      <div className="mx-auto mt-3 h-[3px] w-14 rounded-full bg-brand-gradient" />
-      <p className="mx-auto mt-5 max-w-md text-center text-sm text-muted">
-        A showcase of backend, integration, and full-stack web application work.
-      </p>
+    <section id="projects" className="relative border-t border-line px-6 py-28 md:px-16">
+      <div className="mx-auto max-w-6xl">
+        <Reveal>
+          <span className="font-mono text-xs uppercase tracking-[0.3em] text-magenta">
+            03 · Projects
+          </span>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <h2 className="mt-4 max-w-2xl font-display text-3xl text-ink md:text-5xl">
+            Systems I&apos;ve shipped.
+          </h2>
+        </Reveal>
 
-      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {PROJECTS.map((project) => (
-          <a
-            key={project.title}
-            href={project.href}
-            className="group flex flex-col overflow-hidden rounded-xl border border-panelBorder bg-panel transition-colors hover:border-cyan/60 hover:scale-[1.02]"
-          >
-              <div className="flex h-36 items-center bg-ink px-4">
-              <SystemGlyph variant={project.glyph as any} />
-            </div>
-            <div className="flex flex-1 flex-col gap-3 p-5">
-              <h3 className="font-display text-lg font-semibold text-cyan group-hover:text-gradient">
-                {project.title}
-              </h3>
-              <span className="text-xs uppercase tracking-wider text-muted">
-                {project.category}
-              </span>
-              <p className="text-sm leading-relaxed text-muted">
-                {project.description}
-              </p>
-              <div className="mt-auto flex flex-wrap gap-2 pt-2">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-panelBorder bg-ink px-2.5 py-1 text-xs text-fog"
-                  >
-                    {tag}
+        <div className="mt-16 space-y-6">
+          {projects.map((project, i) => (
+            <Reveal key={project.id} delay={i * 0.1}>
+              <motion.article
+                whileHover={{ y: -4 }}
+                transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                className="group relative overflow-hidden rounded-2xl border border-line bg-surface/40 p-7 md:p-10"
+              >
+                <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-signal opacity-0 transition-opacity duration-500 group-hover:opacity-[0.06]" />
+
+                <div className="relative grid gap-6 md:grid-cols-[1fr_auto] md:items-start">
+                  <div>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <h3 className="font-display text-2xl text-ink md:text-3xl">
+                        {project.name}
+                      </h3>
+                      <span className="rounded-full border border-line px-3 py-1 font-mono text-[11px] uppercase tracking-wide text-cyan">
+                        {project.tag}
+                      </span>
+                    </div>
+
+                    <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted md:text-base">
+                      {project.description}
+                    </p>
+
+                    <ul className="mt-5 space-y-1.5">
+                      {project.highlights.map((h) => (
+                        <li
+                          key={h}
+                          className="flex gap-2 text-sm text-ink/70 before:mt-2 before:h-1 before:w-1 before:shrink-0 before:rounded-full before:bg-violet"
+                        >
+                          {h}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {project.stack.map((s) => (
+                        <span
+                          key={s}
+                          className="rounded-full bg-surface-2 px-3 py-1 font-mono text-xs text-muted"
+                        >
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <span className="font-mono text-sm text-muted/60 md:text-right">
+                    {project.year}
                   </span>
-                ))}
-              </div>
-            </div>
-          </a>
-        ))}
+                </div>
+              </motion.article>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );

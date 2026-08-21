@@ -1,60 +1,258 @@
-import Image from "next/image";
+"use client";
+
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  SiContabo,
+  SiDocker,
+  SiFastapi,
+  SiGit,
+  SiHtml5,
+  SiJavascript,
+  SiKeycdn,
+  SiLinux,
+  SiMongodb,
+  SiNextdotjs,
+  SiPostgresql,
+  SiPython,
+  SiReact,
+  SiFramer,
+  SiShadcnui,
+  SiSpringboot,
+  SiTailwindcss,
+} from "react-icons/si";
+import { FaAws, FaGithub, FaJava, FaMicrosoft } from "react-icons/fa6";
+import { GiArtificialIntelligence } from "react-icons/gi";
+import { RiTerminalBoxLine } from "react-icons/ri";
+import { VscAzure } from "react-icons/vsc";
+import { useEffect, useState } from "react";
+import { profile } from "@/lib/data";
+
+function useTypedLines(lines: string[], speed = 28, lineDelay = 320) {
+  const [output, setOutput] = useState<string[]>([]);
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    const run = async () => {
+      for (let i = 0; i < lines.length; i++) {
+        if (cancelled) return;
+        let current = "";
+        for (const ch of lines[i]) {
+          if (cancelled) return;
+          current += ch;
+          setOutput((prev) => {
+            const next = [...prev];
+            next[i] = current;
+            return next;
+          });
+          await new Promise((r) => setTimeout(r, speed));
+        }
+        await new Promise((r) => setTimeout(r, lineDelay));
+      }
+      if (!cancelled) setDone(true);
+    };
+    run();
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return { output, done };
+}
 
 export default function Hero() {
+  const { output, done } = useTypedLines(profile.bootLines);
+  const headlineLines = ["Software Engineer", "Full Stack Developer", "ICT Support Specialist", "Video Editor", "Graphic Designer",];
+  const [headlineIndex, setHeadlineIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setHeadlineIndex((current) => (current + 1) % headlineLines.length);
+    }, 2400);
+
+    return () => window.clearInterval(interval);
+  }, [headlineLines.length]);
+
+  const orbitIcons = [
+    { Icon: SiNextdotjs, label: "Next.js" },
+    { Icon: FaJava, label: "Java" },
+    { Icon: SiSpringboot, label: "Spring Boot" },
+    { Icon: SiPython, label: "Python" },
+    { Icon: SiReact, label: "React" },
+    { Icon: SiFastapi, label: "FastAPI" },
+    { Icon: SiMongodb, label: "MongoDB" },
+    { Icon: SiTailwindcss, label: "Tailwind CSS" },
+    { Icon: SiDocker, label: "Docker" },
+    { Icon: SiGit, label: "Git" },
+    { Icon: GiArtificialIntelligence, label: "Agentic AI" },
+    { Icon: RiTerminalBoxLine, label: "Linux Shell" },
+    { Icon: SiHtml5, label: "HTML5" },
+    { Icon: SiKeycdn, label: "CDN" },
+    { Icon: SiContabo, label: "Contabo" },
+    { Icon: FaMicrosoft, label: "Azure" },
+    { Icon: FaGithub, label: "GitHub" },
+    { Icon: SiLinux, label: "Linux" },
+    { Icon: SiPostgresql, label: "PostgreSQL" },
+    { Icon: SiJavascript, label: "JavaScript" },
+    { Icon: SiShadcnui, label: "shadcn/ui" },
+    { Icon: VscAzure, label: "VS Code Azure" },
+    { Icon: FaAws, label: "AWS" },
+    { Icon: SiFramer, label: "Framer Motion" },
+  ];
+  const orbitRings = [
+    { inset: "5%", icons: orbitIcons.slice(0, 9), phase: 0, duration: 120 },
+    { inset: "15%", icons: orbitIcons.slice(9, 18), phase: 60, duration: 135 },
+    { inset: "25%", icons: orbitIcons.slice(18, 24), phase: 90, duration: 150 },
+  ];
+
   return (
-    <section id="top" className="mx-auto max-w-3xl px-6 pb-20 pt-16 text-center">
-      <div className="fade-up mx-auto mb-8 h-32 w-32 rounded-full ring-gradient fade-up p-[3px]">
-        <div className="relative h-full w-full overflow-hidden rounded-full bg-panel border: animate-pulse">
-          <Image
-            src="/My Photo.jpg"
-            alt="Simon Githuo Maina"
-            fill
-            sizes="128px"
-            className="object-cover"
-            priority
-          />
+    <section className="relative flex min-h-[680px] items-center justify-center overflow-hidden px-4 pb-16 pt-[10px] sm:min-h-[760px] sm:px-6 sm:pb-20 md:min-h-screen md:px-16">
+      <div className="grid-overlay pointer-events-none absolute inset-0 opacity-50 [mask-image:radial-gradient(ellipse_at_center,black_10%,transparent_70%)]" />
+
+      <div className="relative z-10 flex w-full max-w-5xl justify-center text-center">
+        <div className="relative flex aspect-square w-[min(118vw,1024px)] max-w-5xl items-center justify-center sm:w-[min(100vw,1024px)]">
+          {orbitRings.map(({ inset, icons, phase, duration }, ringIndex) => (
+            <motion.div
+              key={inset}
+              animate={{ rotate: ringIndex % 2 === 0 ? 360 : -360 }}
+              transition={{ duration, repeat: Infinity, ease: "linear" }}
+              className="absolute rounded-full border border-line/70"
+              style={{ inset, transformOrigin: "center center" }}
+            >
+              {icons.map(({ Icon, label }, iconIndex) => (
+                <motion.div
+                  key={label}
+                  className="absolute inset-0"
+                  style={{
+                    transform: `rotate(${phase + iconIndex * (360 / icons.length)}deg)`,
+                    transformOrigin: "center center",
+                  }}
+                >
+                  <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2">
+                    <motion.div
+                      animate={{ rotate: ringIndex % 2 === 0 ? -360 : 360 }}
+                      transition={{ duration, repeat: Infinity, ease: "linear" }}
+                      className="flex h-7 w-7 items-center justify-center rounded-full border border-white/10 bg-[#090b12]/90 text-white/70 shadow-[0_0_18px_rgba(34,211,238,0.1)] transition-colors hover:border-cyan hover:text-cyan sm:h-10 sm:w-10 md:h-14 md:w-14"
+                      style={{ transformOrigin: "center center" }}
+                      title={label}
+                    >
+                      <div
+                        className="flex items-center justify-center"
+                        style={{
+                          transform: (() => {
+                            const placementAngle = phase + iconIndex * (360 / icons.length);
+                            return `rotate(${-placementAngle}deg)`;
+                          })(),
+                          transformOrigin: "center center",
+                        }}
+                      >
+                        <Icon className="h-3.5 w-3.5 sm:h-5 sm:w-5 md:h-6 md:w-6" strokeWidth={1.5} style={{ opacity: 0.9 }} />
+                      </div>
+                    </motion.div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          ))}
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="relative z-10 max-w-[360px] px-6"
+          >
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mb-5 flex items-center justify-center gap-2 font-mono text-[10px] uppercase tracking-[0.28em] text-cyan"
+          >
+            <span>{profile.location}</span>
+            <span>·</span>
+            <span className="flex items-center gap-2">
+              <span>open to work</span>
+              <span className="inline-block h-2.5 w-2.5 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.9)] animate-pulse" />
+            </span>
+          </motion.div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.25 }}
+            className="mx-auto mt-4 max-w-sm text-[13px] leading-relaxed text-blue md:text-base"
+          >
+            {profile.greetings}
+          </motion.p>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="font-display text-1xl font-medium leading-[1.05] tracking-tight text-ink sm:text-2xl md:text-3xl"
+          >
+            <div className="relative h-[1.1em] overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={headlineLines[headlineIndex]}
+                  initial={{ opacity: 0, y: 28 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -28 }}
+                  transition={{ duration: 0.55, ease: "easeInOut" }}
+                  className="absolute left-1/64 top-0 block w-full -translate-x-64 whitespace-nowrap text-center"
+                >
+                  {headlineIndex === 2 ? (
+                    <span className="text-gradient" >{headlineLines[headlineIndex]}</span>
+                  ) : (
+                    <span className="text-gradient">{headlineLines[headlineIndex]}</span>
+                  )}
+                </motion.span>
+              </AnimatePresence>
+            </div>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.25 }}
+            className="mx-auto mt-4 max-w-sm text-[13px] leading-relaxed text-muted md:text-base"
+          >
+            {profile.tagline}
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="mt-8 flex flex-wrap items-center justify-center gap-3"
+          >
+            <a
+              href="#projects"
+              className="group relative overflow-hidden rounded-full bg-ink px-5 py-2.5 font-mono text-xs font-medium text-void transition-transform hover:scale-[1.03]"
+            >
+              View projects
+            </a>
+            <a
+              href="#contact"
+              className="rounded-full border border-line px-5 py-2.5 font-mono text-xs text-ink transition-colors hover:border-cyan hover:text-cyan"
+            >
+              Get in touch
+            </a>
+          </motion.div>
+          </motion.div>
         </div>
       </div>
-      <h1
-        className="fade-up font-display text-4xl font-bold text-fog sm:text-5xl"
-        style={{ animationDelay: "80ms" }}
-      >
-        Simon Githuo Maina
-      </h1>
 
-      <p
-        className="fade-up mt-4 font-display text-lg font-medium text-gradient"
-        style={{ animationDelay: "150ms" }}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.8 }}
+        className="absolute bottom-10 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 md:flex"
       >
-        Building Secure, Scalable Web Systems.
-      </p>
-
-      <p
-        className="fade-up mx-auto mt-6 max-w-xl text-balance text-base leading-relaxed text-muted"
-        style={{ animationDelay: "220ms" }}
-      >
-        Full-stack developer and IT professional with 3+ years across system
-        administration, cloud infrastructure, and full-stack web development
-        with Django, React/Next.js, and PostgreSQL.
-      </p>
-
-      <div
-        className="fade-up mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row prefers-reduced-motion"
-        style={{ animationDelay: "300ms" }}
-      >
-        <a
-          href="#resume"
-          className="w-full rounded-lg bg-brand-gradient px-8 py-3 text-center font-semibold text-ink transition-transform hover:scale-[1.02] sm:w-auto"
-        >
-          View My Resume
-        </a>
-        <a
-          href="#projects"
-          className="w-full rounded-lg border border-cyan px-8 py-3 text-center font-semibold text-cyan transition-colors hover:bg-cyan/10 hover:scale-[1.02] sm:w-auto border: animate-bounce"
-        >
-          Explore Projects
-        </a>
-      </div>
+        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted">
+          scroll
+        </span>
+        <div className="h-10 w-px animate-float bg-gradient-to-b from-cyan via-violet to-transparent" />
+      </motion.div>
     </section>
   );
 }
