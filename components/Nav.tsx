@@ -30,7 +30,8 @@ export default function Nav() {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 md:px-16">
-        <a href="#" className="font-mono text-sm font-medium text-ink">
+        <a href="#" className="flex items-center gap-2 font-mono text-sm font-medium text-ink">
+          <img src="/images/logo.png" alt="Simon.dev logo" className="h-8 w-8 object-contain" />
           {profile.name.toLowerCase()}<span className="text-cyan">.</span>dev
         </a>
         <ul className="hidden items-center gap-8 md:flex">

@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   title: "Simon | Full-Stack Developer & ICT Support Specialist",
   description:
     "Simon is a full-stack developer and ICT support specialist in Nairobi, building compliance systems and web platforms with Django, Next.js, and TypeScript.",
+  icons: {
+    icon: "/images/favicon.png",
+  },
 };
 
 export default function RootLayout({
