@@ -22,6 +22,19 @@ export default function Nav() {
     setScrolled(latest > 40);
   });
 
+  const handleMobileLinkClick = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    event.preventDefault();
+    setMenuOpen(false);
+    window.history.pushState(null, "", href);
+
+    window.requestAnimationFrame(() => {
+      document.getElementById(href.slice(1))?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+  };
+
   return (
     <motion.header
       initial={{ y: -80 }}
@@ -72,7 +85,7 @@ export default function Nav() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="overflow-hidden border-t border-line bg-void/95 backdrop-blur-xl md:hidden"
           >
             <motion.ul
@@ -80,8 +93,8 @@ export default function Nav() {
               animate="open"
               exit="closed"
               variants={{
-                open: { transition: { staggerChildren: 0.075, delayChildren: 0.08 } },
-                closed: { transition: { staggerChildren: 0.035, staggerDirection: -1 } },
+                open: { transition: { staggerChildren: 0.03, delayChildren: 0 } },
+                closed: { transition: { staggerChildren: 0.02, staggerDirection: -1 } },
               }}
               className="mx-auto max-w-6xl px-6 py-4"
             >
@@ -97,7 +110,7 @@ export default function Nav() {
                 >
                   <a
                     href={link.href}
-                    onClick={() => setMenuOpen(false)}
+                    onClick={(event) => handleMobileLinkClick(event, link.href)}
                     className="block border-b border-line/70 py-4 font-mono text-sm uppercase tracking-wider text-muted transition-colors hover:pl-2 hover:text-cyan"
                   >
                     {link.label}
@@ -114,7 +127,7 @@ export default function Nav() {
               >
                 <a
                   href="#contact"
-                  onClick={() => setMenuOpen(false)}
+                  onClick={(event) => handleMobileLinkClick(event, "#contact")}
                   className="mt-4 inline-flex rounded-full border border-line px-5 py-2 font-mono text-xs text-ink transition-colors hover:border-violet hover:text-violet"
                 >
                   Hire me
