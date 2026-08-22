@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { profile } from "@/lib/data";
 
@@ -15,6 +16,7 @@ const links = [
 export default function Nav() {
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 40);
@@ -52,7 +54,76 @@ export default function Nav() {
         >
           Hire me
         </a>
+        <button
+          type="button"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-navigation"
+          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+          onClick={() => setMenuOpen((open) => !open)}
+          className="relative z-10 rounded-md border border-line p-2 text-ink transition-colors hover:border-cyan hover:text-cyan md:hidden"
+        >
+          {menuOpen ? <X size={19} strokeWidth={1.5} /> : <Menu size={19} strokeWidth={1.5} />}
+        </button>
       </nav>
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            id="mobile-navigation"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="overflow-hidden border-t border-line bg-void/95 backdrop-blur-xl md:hidden"
+          >
+            <motion.ul
+              initial="closed"
+              animate="open"
+              exit="closed"
+              variants={{
+                open: { transition: { staggerChildren: 0.075, delayChildren: 0.08 } },
+                closed: { transition: { staggerChildren: 0.035, staggerDirection: -1 } },
+              }}
+              className="mx-auto max-w-6xl px-6 py-4"
+            >
+              {links.map((link) => (
+                <motion.li
+                  key={link.href}
+                  variants={{
+                    open: { opacity: 1, y: 0, rotate: 0, skewX: 0 },
+                    closed: { opacity: 0, y: -18, rotate: -4, skewX: -5 },
+                  }}
+                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                  style={{ transformOrigin: "top center" }}
+                >
+                  <a
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="block border-b border-line/70 py-4 font-mono text-sm uppercase tracking-wider text-muted transition-colors hover:pl-2 hover:text-cyan"
+                  >
+                    {link.label}
+                  </a>
+                </motion.li>
+              ))}
+              <motion.li
+                variants={{
+                  open: { opacity: 1, y: 0, rotate: 0, skewX: 0 },
+                  closed: { opacity: 0, y: -18, rotate: -4, skewX: -5 },
+                }}
+                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                style={{ transformOrigin: "top center" }}
+              >
+                <a
+                  href="#contact"
+                  onClick={() => setMenuOpen(false)}
+                  className="mt-4 inline-flex rounded-full border border-line px-5 py-2 font-mono text-xs text-ink transition-colors hover:border-violet hover:text-violet"
+                >
+                  Hire me
+                </a>
+              </motion.li>
+            </motion.ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 }
