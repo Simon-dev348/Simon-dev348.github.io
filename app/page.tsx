@@ -22,7 +22,7 @@ export default function Home() {
       <Projects />
       <Experience />
       <Contact />
-      <footer className="border-t border-line px-4 py-6 text-center font-mono text-[10px] uppercase tracking-[0.25em] text-muted sm:px-6">
+      <footer className="border-t border-line px-6 py-6 text-center font-mono text-[10px] uppercase tracking-[0.25em] text-muted">
         Simon Githuo @2026
       </footer>
     </main>

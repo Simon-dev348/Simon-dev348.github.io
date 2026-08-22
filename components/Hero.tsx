@@ -107,11 +107,11 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative flex min-h-[680px] items-center justify-center overflow-hidden px-4 pb-16 pt-[10px] sm:min-h-[760px] sm:px-6 sm:pb-20 md:min-h-screen md:px-16">
+    <section className="relative flex min-h-[680px] items-center justify-center overflow-hidden px-6 pb-16 pt-[10px] sm:min-h-[760px] sm:pb-20 md:min-h-screen md:px-16">
       <div className="grid-overlay pointer-events-none absolute inset-0 opacity-50 [mask-image:radial-gradient(ellipse_at_center,black_10%,transparent_70%)]" />
 
       <div className="relative z-10 flex w-full max-w-5xl justify-center text-center">
-        <div className="relative flex aspect-square w-[min(118vw,1024px)] max-w-5xl items-center justify-center sm:w-[min(100vw,1024px)]">
+        <div className="relative flex aspect-square w-[min(100vw,1024px)] max-w-5xl items-center justify-center">
           {orbitRings.map(({ inset, icons, phase, duration }, ringIndex) => (
             <motion.div
               key={inset}
