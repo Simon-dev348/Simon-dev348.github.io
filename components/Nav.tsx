@@ -44,8 +44,8 @@ export default function Nav() {
         scrolled ? "border-b border-line bg-void/80 backdrop-blur-lg" : "bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 md:px-16">
-        <a href="#" className="flex items-center gap-2 font-mono text-sm font-medium text-ink">
+      <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-5 sm:px-6 md:px-16">
+        <a href="#" className="flex min-w-0 items-center gap-2 whitespace-nowrap font-mono text-sm font-medium text-ink">
           <img src="/images/logo.png" alt="Simon.dev logo" className="h-8 w-8 object-contain" />
           {profile.name.toLowerCase()}<span className="text-cyan">.</span>dev
         </a>

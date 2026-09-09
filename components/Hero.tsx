@@ -105,7 +105,7 @@ export default function Hero() {
   const orbitRings = [
     { inset: "5%", icons: orbitIcons.slice(0, 9), phase: 0, duration: 120 },
     { inset: "15%", icons: orbitIcons.slice(9, 18), phase: 60, duration: 135 },
-    { inset: "25%", icons: orbitIcons.slice(18, 24), phase: 90, duration: 150 },
+    { inset: "25%", icons: orbitIcons.slice(18, 25), phase: 90, duration: 150 },
   ];
 
   return (
@@ -119,7 +119,7 @@ export default function Hero() {
               key={inset}
               animate={{ rotate: ringIndex % 2 === 0 ? 360 : -360 }}
               transition={{ duration, repeat: Infinity, ease: "linear" }}
-              className="absolute rounded-full border border-line/70"
+              className="absolute hidden rounded-full border border-line/70 md:block"
               style={{ inset, transformOrigin: "center center" }}
             >
               {icons.map(({ Icon, label }, iconIndex) => (
@@ -135,7 +135,7 @@ export default function Hero() {
                     <motion.div
                       animate={{ rotate: ringIndex % 2 === 0 ? -360 : 360 }}
                       transition={{ duration, repeat: Infinity, ease: "linear" }}
-                      className="flex h-7 w-7 items-center justify-center rounded-full border border-white/10 bg-[#090b12]/90 text-white/70 shadow-[0_0_18px_rgba(34,211,238,0.1)] transition-colors hover:border-cyan hover:text-cyan sm:h-10 sm:w-10 md:h-14 md:w-14"
+                      className="flex h-7 w-7 items-center justify-center rounded-full border border-white/20 bg-[#090b12] text-white transition-colors hover:border-cyan hover:text-cyan sm:h-10 sm:w-10 md:h-14 md:w-14"
                       style={{ transformOrigin: "center center" }}
                       title={label}
                     >
@@ -149,7 +149,10 @@ export default function Hero() {
                           transformOrigin: "center center",
                         }}
                       >
-                        <Icon className="h-3.5 w-3.5 sm:h-5 sm:w-5 md:h-6 md:w-6" strokeWidth={1.5} style={{ opacity: 0.9 }} />
+                        <Icon
+                          className={`h-3.5 w-3.5 sm:h-5 sm:w-5 md:h-6 md:w-6 ${label === "UiPath" ? "w-6 text-white sm:w-8 md:w-10" : ""}`}
+                          strokeWidth={1.5}
+                        />
                       </div>
                     </motion.div>
                   </div>
@@ -162,7 +165,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
-            className="relative z-10 max-w-[360px] px-6"
+            className="relative z-10 -translate-y-8 max-w-[360px] px-6 sm:translate-y-0"
           >
           <motion.div
             initial={{ opacity: 0, y: 12 }}

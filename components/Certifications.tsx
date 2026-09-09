@@ -43,7 +43,7 @@ export default function Certifications() {
         </Reveal>
         <div className="mt-8 grid gap-4 md:grid-cols-2">
           {certifications.map((certification, index) => (
-            <Reveal key={certification.title} delay={index * 0.08}>
+            <Reveal key={certification.title} delay={index * 0.08} className="min-w-0">
               <article className="flex h-full flex-col justify-between gap-6 rounded-xl border border-line bg-surface/50 p-6 transition-colors hover:border-cyan/40">
                 <div className="flex items-center gap-3">
                   <div className="flex h-[72px] w-[72px] shrink-0 items-center justify-center">
