@@ -63,7 +63,7 @@ function useTypedLines(lines: string[], speed = 28, lineDelay = 320) {
 
 export default function Hero() {
   const { output, done } = useTypedLines(profile.bootLines);
-  const headlineLines = ["Software Engineer", "Full Stack Developer", "ICT Support Specialist", "Video Editor", "Graphic Designer",];
+  const headlineLines = ["Software Engineer", "Full Stack Developer", "ICT Support Specialist", "RPA Enthusiast", "Video Editor", "Graphic Designer",];
   const [headlineIndex, setHeadlineIndex] = useState(0);
 
   useEffect(() => {
