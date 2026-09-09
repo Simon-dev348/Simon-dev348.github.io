@@ -19,6 +19,7 @@ import {
   SiShadcnui,
   SiSpringboot,
   SiTailwindcss,
+  SiUipath,
 } from "react-icons/si";
 import { FaAws, FaGithub, FaJava, FaMicrosoft } from "react-icons/fa6";
 import { GiArtificialIntelligence } from "react-icons/gi";
@@ -99,6 +100,7 @@ export default function Hero() {
     { Icon: VscAzure, label: "VS Code Azure" },
     { Icon: FaAws, label: "AWS" },
     { Icon: SiFramer, label: "Framer Motion" },
+    { Icon: SiUipath, label: "UiPath" },
   ];
   const orbitRings = [
     { inset: "5%", icons: orbitIcons.slice(0, 9), phase: 0, duration: 120 },
