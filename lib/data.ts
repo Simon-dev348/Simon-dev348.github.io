@@ -85,7 +85,7 @@ export const projects = [
       "Hosting and deployment strategy for cloud environments, including CI/CD pipelines and automated testing",
     ],
     year: "2026",
-    projectUrl: "https://github.com/Simon-dev348/Procurement-System",
+    projectUrl: "https://github.com/Simon-dev348/ProcurementSystem",
   },
   {
     id: "portfolio",
