@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Reveal from "./Reveal";
 import { projects } from "@/lib/data";
+import { ExternalLink } from "lucide-react";
 
 export default function Projects() {
   return (
@@ -70,6 +71,18 @@ export default function Projects() {
                   <span className="font-mono text-sm text-muted/60 md:text-right">
                     {project.year}
                   </span>
+
+                  <div className="projectUrl items-center justify-center md:flex">
+                    <a
+                      href={project.projectUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex shrink-0 items-center gap-1.5 rounded-full border border-line px-3 py-1.5 font-mono text-[10px] text-ink transition-colors hover:border-cyan hover:text-cyan sm:gap-2 sm:px-4 sm:py-2 sm:text-xs"
+                    >
+                      View Project
+                      <ExternalLink size={14} aria-hidden="true" />
+                    </a>
+                  </div>
                 </div>
               </motion.article>
             </Reveal>

@@ -25,6 +25,7 @@ export const stack = {
   AI_Tools: ["Claude", "Github Copilot", "Codex"],
   Frameworks: ["Next.js", "Django REST Framework", "Spring Boot"],
   DevOps: ["Docker", "Kubernetes", "GitHub Actions", "Jenkins","Nginx"],
+  CDN: ["Cloudflare", "AWS CloudFront", "Fastly", "Microsoft Azure CDN"],
 };
 
 export const projects = [
@@ -47,15 +48,15 @@ export const projects = [
       "Gathering, documenting and turning system requirements into actionable development tasks",
     ],
     year: "2026",
-    projectUrl: "https://github.com/Simon-dev348",
+    projectUrl: "https://github.com/Simon-dev348/booking",
   },
   {
     id: "Inventory & POS Management-System",
     name: "Keen Inventory & POS Management System",
-    tag: "Collaboration with a developer team",
+    tag: "System is live",
     description:
       "A comprehensive inventory and point-of-sale management system designed to streamline operations for retail businesses.",
-    stack: ["Next.js 14", "TypeScript","React","Tailwind CSS", "Framer Motion"],
+    stack: ["Java", "Springboot", "Maven", "TypeScript","React","Tailwind CSS", "Cloudflare"],
     highlights: [
       "Implementation of a robust inventory management system with real-time tracking and reporting",
       "Deploying Hosting the system on Contabo Hosting with Docker and PostgreSQL for scalability and reliability",
@@ -65,7 +66,7 @@ export const projects = [
       "Gathering, documenting and turning system requirements into actionable development tasks",
     ],
     year: "2026",
-    projectUrl: "https://github.com/Simon-dev348",
+    projectUrl: "https://github.com/Simon-dev348/Keen-POS",
   },
  
   {
@@ -84,7 +85,7 @@ export const projects = [
       "Hosting and deployment strategy for cloud environments, including CI/CD pipelines and automated testing",
     ],
     year: "2026",
-    projectUrl: "https://github.com/Simon-dev348",
+    projectUrl: "https://github.com/Simon-dev348/Procurement-System",
   },
   {
     id: "portfolio",
@@ -99,7 +100,7 @@ export const projects = [
       "Content-driven components — one data file, no hardcoded copy",
     ],
     year: "2026",
-    projectUrl: "https://github.com/Simon-dev348",
+    projectUrl: "https://github.com/Simon-dev348/Simon-dev348.github.io",
   },
     {
     id: "borasystems",
