@@ -52,7 +52,7 @@ export default function Contact() {
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <span className="font-mono text-xs uppercase tracking-[0.3em] text-violet">
-            05 · Get in touch
+            06 · Get in touch
           </span>
         </Reveal>
         <Reveal delay={0.1}>

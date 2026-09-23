@@ -10,6 +10,7 @@ const links = [
   { label: "Stack", href: "#stack" },
   { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
+  { label: "CV", href: "#cv" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -47,7 +48,7 @@ export default function Nav() {
       <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-5 sm:px-6 md:px-16">
         <a href="#" className="flex min-w-0 items-center gap-2 whitespace-nowrap font-mono text-sm font-medium text-ink">
           <img src="/images/logo.png" alt="Simon.dev logo" className="h-8 w-8 object-contain" />
-          {profile.name.toLowerCase()}<span className="text-cyan">.</span>dev
+          {profile.name}<span className="text-cyan">Githuo</span>
         </a>
         <ul className="hidden items-center gap-8 md:flex">
           {links.map((link) => (

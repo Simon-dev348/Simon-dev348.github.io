@@ -7,6 +7,7 @@ import Education from "@/components/Education";
 import Certifications from "@/components/Certifications";
 import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
+import CV from "@/components/CV";
 import Contact from "@/components/Contact";
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
       <Certifications />
       <Projects />
       <Experience />
+      <CV />
       <Contact />
       <footer className="border-t border-line px-6 py-6 text-center font-mono text-[10px] uppercase tracking-[0.25em] text-muted">
         Simon Githuo @2026

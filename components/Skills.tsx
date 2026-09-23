@@ -34,10 +34,10 @@ export default function Skills() {
         </div>
       </div>
 
-      <div className="mx-auto mt-16 grid max-w-6xl gap-8 px-6 sm:grid-cols-2 md:px-16 lg:grid-cols-3">
+      <div className="mx-auto mt-16 max-w-6xl columns-1 gap-6 px-6 sm:columns-2 md:px-16 lg:columns-3">
         {Object.entries(stack).map(([category, items], i) => (
-          <Reveal key={category} delay={i * 0.08}>
-            <div className="h-full rounded-xl border border-line bg-surface/50 p-6 transition-colors hover:border-cyan/40">
+          <Reveal key={category} delay={(i % 3) * 0.08} className="mb-6 break-inside-avoid">
+            <div className="rounded-xl border border-line bg-surface/50 p-6 transition-colors hover:border-cyan/40">
               <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-violet">
                 {category}
               </h3>

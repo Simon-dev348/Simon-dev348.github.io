@@ -15,7 +15,44 @@ export const profile = {
   ],
 };
 
+export const aboutViews = [
+  {
+    id: "development",
+    label: "Full-Stack Developer",
+    headlineStart: "I work at the point where ",
+    headlineHighlight: "software meets infrastructure",
+    headlineEnd: " — writing the API and keeping the server it runs on alive.",
+    description:
+      "Based in Nairobi, I split my time between building full-stack products — Django REST APIs paired with Next.js frontends — and the ICT support work that keeps real systems running: networking, deployment pipelines, and the unglamorous reliability work most portfolios leave out. That combination means I design software with its actual operating conditions in mind, not just its happy path.",
+    stamp: "/images/qualifiedstamp.png",
+    stampAlt: "Qualified full-stack developer stamp",
+  },
+  {
+    id: "it-support",
+    label: "IT Support Specialist",
+    headlineStart: "I keep ",
+    headlineHighlight: "people connected and systems reliable",
+    headlineEnd: " — from everyday troubleshooting to secure IT infrastructure.",
+    description:
+      "My IT support experience spans hands-on troubleshooting, Microsoft 365 administration, networking, and endpoint security. I help users resolve hardware, software, and connectivity issues, manage access with Entra ID and MFA, and support backups and device updates. Alongside the technical work, I provide user training and clear documentation that help teams get the most from their systems.",
+    stamp: "/images/IT%20Support%20Specialist%20Stamp.png",
+    stampAlt: "IT Support Specialist stamp",
+  },
+];
+
 export const stack = {
+  "IT Support": [
+    "Hardware & Software Troubleshooting",
+    "LAN/Wi-Fi Administration",
+    "Microsoft 365 Administration",
+    "Remote Tecnical Support (RDP, TeamViewer, AnyDesk)",
+    "Endpoint Security",
+    "Identity & Access Management",
+    "Backup & Recovery",
+    "IT Asset & License Management",
+    "User Training",
+    "Technical Documentation",
+  ],
   RPA : ["UiPath", "Microsoft Power Automate"],
   Frontend: ["Next.js", "TypeScript", "Tailwind CSS","JavaScript", "React", "React Query", "Zustand"],
   Backend: ["Python", "Java", "Spring Boot", "Django REST Framework", "Fastify", "simplejwt", "BullMQ"],
@@ -48,7 +85,7 @@ export const projects = [
       "Gathering, documenting and turning system requirements into actionable development tasks",
     ],
     year: "2026",
-    projectUrl: "https://github.com/Simon-dev348/booking",
+    projectUrl: "https://applewoodmed.onrender.com/",
   },
   {
     id: "Inventory & POS Management-System",
@@ -137,32 +174,78 @@ export const projects = [
 
 export const experience = [
   {
-    role: "Full-Stack Developer",
-    org: "Independent / Contract",
-    period: "Jan 2022 — Present",
+    id: "full-stack-developer",
+    role: "Full Stack Developer",
+    org: "Freelance (Part-time)",
+    period: "Jan 2023 — Aug 2026",
     description:
-      "Designing and shipping full-stack systems for Kenyan enterprise clients, spanning procurement, compliance, and payments integration.",
+      "Designed and implemented secure, scalable web systems, including a Health Clinic Appointment Booking System, Inventory and POS System, and Procurement System, translating business requirements into reliable digital solutions.",
+    highlights: [
+      "Designed and deployed full-stack applications using Java, Django, React/Next.js, RESTful APIs, PostgreSQL, and MongoDB.",
+      "Integrated payment services including M-Pesa Daraja API and implemented secure authentication and authorization.",
+      "Used Docker, GitHub, and CI/CD pipelines for consistent development, testing, and production workflows.",
+      "Conducted testing, debugging, performance tuning, and application security improvements.",
+    ],
   },
   {
+    id: "it-support-specialist",
     role: "IT Support Specialist",
-    org: "Contract",
-    period: "Jan 2024 — May 2026",
+    org: "Microhouse Technologies Limited",
+    period: "Jan 2024 — Oct 2025",
     description:
-      "Providing infrastructure and support work alongside development — networking, deployment, and day-to-day systems reliability.",
+      "Provided technical support and systems administration across IT infrastructure, Microsoft 365, networks, endpoints, security, and business applications.",
+    highlights: [
+      "Resolved application, system, email, network, and endpoint issues; trained users on IT best practices and cybersecurity awareness.",
+      "Provided onsite and remote support using AnyDesk and maintained computers, laptops, phones, printers, and other IT assets.",
+      "Maintained documentation for IT assets, software licenses, services, and Microsoft 365 subscriptions.",
+      "Configured, monitored, and maintained LAN/Wi-Fi infrastructure for reliable connectivity.",
+      "Administered Microsoft 365 accounts and licenses, Outlook, Teams, SharePoint, OneDrive, Intune, Entra ID, MFA, role-based access, and Azure Active Directory audit trails.",
+      "Implemented endpoint security using Entra ID and Microsoft Defender for Endpoint.",
+      "Maintained company domain DNS records, hosting, and SSL certificates.",
+      "Supported backups, recovery, endpoint patching, and security updates using Intune and Microsoft 365 Backups.",
+      "Coordinated SwiftHR HRMS schedules, plans, tasks, and meetings using Microsoft Project, Planner, and Teams; gathered and documented client requirements.",
+      "Designed automated process flows for Business Central using Microsoft Power Automate.",
+      "Maintained technical documentation and collaborated with cross-functional teams on system improvements.",
+    ],
   },
   {
+    id: "it-support-intern",
     role: "IT Support Intern",
-    org: "Internship",
+    org: "Microhouse Technologies Limited",
     period: "Sept 2023 — Dec 2023",
     description:
-      "Providing infrastructure and IT support work to ensure day-to-day systems reliability.",
+      "Supported organizational IT operations through technical support, system implementations, and the development of digital solutions.",
+    highlights: [
+      "Provided technical support and guidance on IT infrastructure best practices to company staff.",
+      "Maintained LAN, Wi-Fi, portable Wi-Fi, and landline phones to support continuous connectivity.",
+      "Supported SwiftHR HRMS technical and functional requirements during client workshops.",
+      "Coordinated implementation team tasks and milestones using Microsoft Planner.",
+      "Supported development, hosting, and deployment of company web applications to Netlify, Render, and GitHub Pages.",
+    ],
   },
   {
-    role: "Video Editor & Graphic Designer",
-    org: "Independent / Contract",
-    period: "Jan 2022 — Present",
-    description:
-      "Designing and editing video content for social media, marketing, and corporate communications, alongside creating graphics and visual assets.",
+    id: "computer-studies-teacher",
+    role: "Computer Studies Teacher",
+    org: "Kiawambogo Mixed Secondary School",
+    period: "Feb 2023 — Mar 2023",
+    description: "Taught Computer Studies at Kiawambogo Mixed Secondary School.",
+    highlights: [],
+  },
+  {
+    id: "computer-trainer-designer",
+    role: "Computer Trainer and Graphic Designer",
+    org: "Linkworld Inc. and info Systems",
+    period: "Jan 2022 — Jun 2023",
+    description: "Worked as a Computer Trainer and Graphic Designer at Linkworld Inc. and info Systems.",
+    highlights: [],
+  },
+  {
+    id: "attache",
+    role: "Attaché",
+    org: "Kiru Tea Factory Company Limited",
+    period: "Sept 2021 — Nov 2021",
+    description: "Completed an attachment at Kiru Tea Factory Company Limited.",
+    highlights: [],
   },
 ];
 
